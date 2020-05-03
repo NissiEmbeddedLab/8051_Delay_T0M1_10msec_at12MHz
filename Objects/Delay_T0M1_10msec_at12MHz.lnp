@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\Delay_T0M1_10msec_at12MHz.obj" 
+TO ".\Objects\Delay_T0M1_10msec_at12MHz" 
+PRINT(".\Listings\Delay_T0M1_10msec_at12MHz.m51") RAMSIZE(256) 

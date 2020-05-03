@@ -1,0 +1,48 @@
+C51 COMPILER V9.60.0.0   DELAY_T0M1_10MSEC_AT12MHZ                                         05/03/2020 14:22:22 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE DELAY_T0M1_10MSEC_AT12MHZ
+OBJECT MODULE PLACED IN .\Objects\Delay_T0M1_10msec_at12MHz.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE Delay_T0M1_10msec_at12MHz.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND 
+                    -PRINT(.\Listings\Delay_T0M1_10msec_at12MHz.lst) TABS(2) OBJECT(.\Objects\Delay_T0M1_10msec_at12MHz.obj)
+
+line level    source
+
+   1          #include<reg51.h>
+   2          void T0M1Delay();
+   3          void main(void)
+   4          {
+   5   1        while(1)
+   6   1        {
+   7   2        P1 = 0x00;
+   8   2        T0M1Delay();
+   9   2        P1 = 0xFF;
+  10   2        T0M1Delay();
+  11   2      }
+  12   1        }
+  13          void T0M1Delay()
+  14          {
+  15   1        unsigned int a;
+  16   1        TMOD = 0x01;
+  17   1        TH0 = 0xD8;       //0XD8F0 FOR 10msec delay @12MHz Oscillator frquency
+  18   1        TL0 = 0xF0;
+  19   1        TR0 = 1;
+  20   1        while(TF0 == 0);
+  21   1        TR0 = 0;
+  22   1        TF0 = 0;
+  23   1        }
+*** WARNING C280 IN LINE 15 OF Delay_T0M1_10msec_at12MHz.c: 'a': unreferenced local variable
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     33    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       2
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)
